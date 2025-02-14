@@ -1,0 +1,156 @@
+/*
+  Reset.scss : Un fichier SCSS de reset pour réinitialiser les styles par défaut des navigateurs.
+*/
+
+// Box-sizing border-box pour tous les éléments
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Suppression des marges et paddings par défaut
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// Correction de l'héritage et suppression du style par défaut
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1;
+}
+
+// Suppression des styles de liste par défaut
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Liens sans soulignement par défaut
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Boutons et inputs sans styles natifs
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Suppression des ombres et styles par défaut sur les formulaires
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// Images responsive
+img {
+  max-width: 100%;
+  height: auto;
+}

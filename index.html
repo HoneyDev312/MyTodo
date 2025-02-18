@@ -12,24 +12,42 @@
     />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" type="module" defer></script>
   </head>
   <body>
+    <!-- HEADER -->
     <header class="header"><h1 class="title">MY TO DO LIST</h1></header>
 
+    <!-- FORM -->
     <form id="task-form" class="task-form" novalidate>
       <input
         class="form-input"
         type="text"
         id="newTask"
         name="newTask"
-        placeholder="Entrez une nouvelle Tâche"
+        placeholder="Entrez une nouvelle Tâche..."
         autocomplete="off"
         required
       />
       <button class="form-button" id="form-button" type="submit">
-        Enregistrer
+        Ajouter
       </button>
     </form>
+
+    <!-- TASKS LIST -->
+    <section class="task-list">
+      <div class="task-card">
+        <p class="task-title">Je suis une tâche</p>
+      </div>
+      <div class="task-card">
+        <p class="task-title">Je suis une tâche</p>
+      </div>
+      <div class="task-card">
+        <p class="task-title">Je suis une tâche</p>
+      </div>
+      <div class="task-card">
+        <p class="task-title">Je suis une tâche</p>
+      </div>
+    </section>
   </body>
-  <script src="script.js"></script>
 </html>

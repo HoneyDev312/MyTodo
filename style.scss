@@ -39,6 +39,7 @@ body {
   font-style: normal;
 }
 
+// HEADER
 .header {
   padding: 24px;
   .title {
@@ -47,6 +48,7 @@ body {
   }
 }
 
+//FORM
 .task-form {
   display: flex;
   justify-content: center;
@@ -72,5 +74,24 @@ body {
     border-radius: 0.4rem;
     width: 20%;
     padding: $spacing-xs;
+  }
+}
+
+//TASKS LIST
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $spacing-lg 0;
+  gap: $font-size-heading-md;
+  .task-card {
+    border: 0.1rem solid $grey;
+    border-radius: 0.4rem;
+    width: 60%;
+    padding: $spacing-xs;
+  }
+
+  .task-title {
+    font-weight: $bold;
   }
 }

@@ -4,11 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyTodo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>TO DO LIST</h1>
+    <header class="header"><h1 class="title">MY TO DO LIST</h1></header>
+
+    <form id="task-form" class="task-form" novalidate>
+      <input
+        class="form-input"
+        type="text"
+        id="newTask"
+        name="newTask"
+        placeholder="Entrez une nouvelle Tâche"
+        autocomplete="off"
+        required
+      />
+      <button class="form-button" id="form-button" type="submit">
+        Enregistrer
+      </button>
+    </form>
   </body>
   <script src="script.js"></script>
 </html>

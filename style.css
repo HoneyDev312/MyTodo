@@ -1,3 +1,47 @@
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
 body {
-  background-color: #c6538c;
+  background-color: 200;
+  color: #2a2d34;
+  font-size: 1.6rem;
+  font-family: "Delicious Handrawn", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.header {
+  padding: 24px;
+}
+.header .title {
+  text-align: center;
+  font-size: 4rem;
+}
+
+.task-form {
+  display: flex;
+  justify-content: center;
+}
+.task-form .form-input {
+  border: 0.1rem solid #2a2d34;
+  border-radius: 0.4rem;
+  width: 60%;
+  padding: 0.8rem;
+  margin-right: 2.4rem;
+}
+.task-form .form-input::-moz-placeholder {
+  color: #2a2d34;
+}
+.task-form .form-input::placeholder {
+  color: #2a2d34;
+}
+.task-form .form-input:focus {
+  outline: 0.2rem #ff5400 solid;
+}
+.task-form .form-button {
+  border: 0.1rem solid black;
+  border-radius: 0.4rem;
+  width: 20%;
+  padding: 0.8rem;
 }/*# sourceMappingURL=style.css.map */

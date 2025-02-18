@@ -1,5 +1,76 @@
-$base-color: #c6538c;
+$white: #ffffff;
+$black: #000000;
+
+$primary: #ff5400;
+
+$light: #ede7d9;
+
+$grey: #2a2d34;
+
+$spacing-xs: 0.8rem;
+$spacing-sm: 1.6rem;
+$spacing-md: 2.4rem;
+$spacing-lg: 3.2rem;
+
+$light: 200;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+$font-size-heading-xl: 3.8rem;
+$font-size-heading-lg: 2.8rem;
+$font-size-heading-md: 2.4rem;
+$font-size-heading-sm: 1.8rem;
+$font-size-body-lg: 1.6rem;
+$font-size-body-md: 1.4rem;
+$font-size-body-sm: 1.2rem;
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
 
 body {
-  background-color: $base-color;
+  background-color: $light;
+  color: $grey;
+  font-size: $font-size-body-lg;
+  font-family: "Delicious Handrawn", serif;
+  font-weight: $regular;
+  font-style: normal;
+}
+
+.header {
+  padding: 24px;
+  .title {
+    text-align: center;
+    font-size: 4rem;
+  }
+}
+
+.task-form {
+  display: flex;
+  justify-content: center;
+
+  .form-input {
+    border: 0.1rem solid $grey;
+    border-radius: 0.4rem;
+    width: 60%;
+    padding: $spacing-xs;
+    margin-right: $spacing-md;
+  }
+
+  .form-input::placeholder {
+    color: $grey;
+  }
+
+  .form-input:focus {
+    outline: 0.2rem $primary solid;
+  }
+
+  .form-button {
+    border: 0.1rem solid black;
+    border-radius: 0.4rem;
+    width: 20%;
+    padding: $spacing-xs;
+  }
 }

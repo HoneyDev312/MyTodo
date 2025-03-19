@@ -12,6 +12,11 @@
     />
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/d6ddfae692.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" type="module" defer></script>
   </head>
   <body>
     <header class="header"><h1 class="title">MY TO DO LIST</h1></header>
@@ -30,6 +35,20 @@
         Enregistrer
       </button>
     </form>
+
+    <!-- FILTER -->
+    <div class="filter-list" role="group">
+      <button type="button" class="filter all" data-filter="all">Toutes</button>
+      <button type="button" class="filter todo" data-filter="todo">
+        A faire
+      </button>
+      <button type="button" class="filter done" data-filter="done">
+        Faites
+      </button>
+    </div>
+
+    <!-- TASKS LIST -->
+    <ul class="task-list"></ul>
   </body>
   <script src="script.js"></script>
 </html>

@@ -12,11 +12,11 @@ $spacing-sm: 1.6rem;
 $spacing-md: 2.4rem;
 $spacing-lg: 3.2rem;
 
-$light: 200;
-$regular: 400;
-$medium: 500;
-$semibold: 600;
-$bold: 700;
+$weight-light: 200;
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
 
 $font-size-heading-xl: 3.8rem;
 $font-size-heading-lg: 2.8rem;
@@ -35,7 +35,7 @@ body {
   color: $grey;
   font-size: $font-size-body-lg;
   font-family: "Delicious Handrawn", serif;
-  font-weight: $regular;
+  font-weight: $weight-regular;
   font-style: normal;
 }
 
@@ -72,5 +72,60 @@ body {
     border-radius: 0.4rem;
     width: 20%;
     padding: $spacing-xs;
+  }
+}
+
+//FILTER
+.filter-list {
+  display: flex;
+  justify-content: center;
+  margin: $spacing-lg 0;
+  gap: 0 $spacing-md;
+
+  .filter {
+    border: 0.1rem solid $grey;
+    border-radius: 0.4rem;
+    padding: $spacing-xs;
+    cursor: pointer;
+  }
+}
+
+//TASKS LIST
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $spacing-lg 0;
+  gap: $font-size-heading-md;
+  .task-card {
+    position: relative;
+    display: flex;
+    border: 0.1rem solid $grey;
+    border-radius: 0.4rem;
+    width: 60%;
+    padding: $spacing-xs;
+
+    .task-checkbox {
+      appearance: none;
+      cursor: pointer;
+      border: 0.1rem solid $grey;
+      border-radius: 0.4rem;
+      width: 2rem;
+      height: 2rem;
+      margin-right: $spacing-xs;
+      &:checked {
+        border: 0.1rem solid $grey;
+        background-color: $primary;
+      }
+    }
+
+    .task-title {
+      font-weight: $weight-bold;
+    }
+
+    .task-trash {
+      position: absolute;
+      right: $spacing-xs;
+    }
   }
 }

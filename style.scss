@@ -2,10 +2,14 @@ $white: #ffffff;
 $black: #000000;
 
 $primary: #ff5400;
+$primaryLight: #ff540040;
 
 $light: #ede7d9;
 
 $grey: #2a2d34;
+
+$error: #a5243d;
+$errorLight: #a5243d40;
 
 $spacing-xs: 0.8rem;
 $spacing-sm: 1.6rem;
@@ -39,8 +43,21 @@ body {
   font-style: normal;
 }
 
+.error-card {
+  border: 0.1rem solid $error;
+  background-color: $errorLight;
+  border-radius: 0.4rem;
+  width: 60%;
+  padding: $spacing-md;
+  margin: auto;
+  color: $error;
+  font-size: $font-size-heading-lg;
+  text-align: center;
+  margin-top: $spacing-md;
+}
+
 .header {
-  padding: 24px;
+  padding: 2.4rem;
   .title {
     text-align: center;
     font-size: 4rem;
@@ -87,6 +104,13 @@ body {
     border-radius: 0.4rem;
     padding: $spacing-xs;
     cursor: pointer;
+    &:hover {
+      background-color: $primaryLight;
+    }
+  }
+
+  .active {
+    outline: 0.2rem $primary solid;
   }
 }
 
@@ -128,4 +152,9 @@ body {
       right: $spacing-xs;
     }
   }
+}
+
+.hide-completed .is-completed,
+.hide-todo .task-card:not(.is-completed) {
+  display: none !important;
 }

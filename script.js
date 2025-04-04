@@ -1,44 +1,32 @@
+import { TodoList, TodoListItem } from "./TodoList.js";
 import { checkField } from "./checkField.js";
+import { createElement } from "./dom.js";
 import { fetchData } from "./fetchData.js";
 
-const url = "https://jsonplaceholder.typicode.com/posts?_limit=10";
-
+const url = "https://jsonplaceholder.typicode.com/todos?_limit=10";
+const body = document.querySelector("body");
 const input = document.querySelector("input");
 const button = document.querySelector("#form-button");
-const taskList = document.querySelector(".task-list");
-const taskCard = document.querySelector(".task-card");
 
 // FETCHDATA
-let posts = [];
+try {
+  const todos = await fetchData(url);
+  const todoList = new TodoList(todos);
 
-await fetchData(url)
-  .then((data) => {
-    console.log("Données reçues :", data);
-    posts = [...data];
-  })
-  .catch((error) => console.error("Erreur :", error));
+  todoList.appendTo(body);
 
-// CHECK IF FIELD IS EMPTY ON LOADING
-checkField(input, button);
+  // CHECK IF FIELD IS EMPTY ON LOADING
+  checkField(input, button);
 
-// CHECK IF FIELD IS EMPTY ON EACH LOADING
-input.addEventListener("input", () => checkField(input, button));
-
-document
-  .getElementById("task-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    let newTask = document.getElementById("newTask").value;
-    console.log(newTask);
-    this.reset();
-    checkField();
+  // CHECK IF FIELD IS EMPTY ON EACH LOADING
+  input.addEventListener("input", () => checkField(input, button));
+} catch (error) {
+  console.log(error);
+  const errorElement = createElement("div", {
+    class: "error-card",
+    role: "alert-error",
   });
 
-if (posts) {
-  posts.forEach((post) => {
-    let newTaskCard = document.createElement("li");
-    newTaskCard.className = "task-card";
-    newTaskCard.innerHTML = `<input class="task-checkbox" type="checkbox"/><p class="task-title">${post.title}</p><div class="task-trash"><i class="fa-solid fa-trash"></i></div>`;
-    taskList.appendChild(newTaskCard);
-  });
+  errorElement.innerText = "Impossible de charger le contenu !";
+  body.prepend(errorElement);
 }

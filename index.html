@@ -16,7 +16,7 @@
       src="https://kit.fontawesome.com/d6ddfae692.js"
       crossorigin="anonymous"
     ></script>
-    <script src="script.js" type="module" defer></script>
+    <script type="module" src="script.js" defer></script>
   </head>
   <body>
     <header class="header"><h1 class="title">MY TO DO LIST</h1></header>
@@ -38,7 +38,9 @@
 
     <!-- FILTER -->
     <div class="filter-list" role="group">
-      <button type="button" class="filter all" data-filter="all">Toutes</button>
+      <button type="button" class="filter all active" data-filter="all">
+        Toutes
+      </button>
       <button type="button" class="filter todo" data-filter="todo">
         A faire
       </button>
@@ -48,7 +50,5 @@
     </div>
 
     <!-- TASKS LIST -->
-    <ul class="task-list"></ul>
   </body>
-  <script src="script.js"></script>
 </html>

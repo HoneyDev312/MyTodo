@@ -48,6 +48,16 @@ export class TodoList {
         button.addEventListener("click", (e) => this.#toggleFilter(e))
       );
 
+    this.#listElement.addEventListener("deleteTodo", ({ detail: todo }) => {
+      this.#todos = this.#todos.filter((t) => t !== todo);
+      this.#onUpdate();
+    });
+
+    this.#listElement.addEventListener("toggleTodo", ({ detail: todo }) => {
+      todo.completed = !todo.completed;
+      this.#onUpdate();
+    });
+
     element.append(this.#listElement);
   }
 
@@ -64,17 +74,22 @@ export class TodoList {
     if (title === "") {
       return;
     }
-
-    const newTask = new TodoListItem({
+    const todo = {
       id: new Date(),
       title,
       completed: false,
-    });
-
-    this.#listElement.prepend(newTask.element);
+    };
+    const newTodo = new TodoListItem(todo);
+    this.#listElement.prepend(newTodo.element);
+    this.#todos.push(todo);
+    this.#onUpdate();
     form.reset();
     checkField(input, button);
     input.focus();
+  }
+
+  #onUpdate() {
+    localStorage.setItem("todos", JSON.stringify(this.#todos));
   }
 
   /**
@@ -112,7 +127,13 @@ export class TodoListItem {
   /**
    * @type {Todo}
    */
+  #todo;
+
+  /**
+   * @type {Todo}
+   */
   constructor(todo) {
+    this.#todo = todo;
     const id = `todo-${todo.id}`;
     const li = createElement("li", { class: "task-card" });
     this.#element = li;
@@ -150,6 +171,15 @@ export class TodoListItem {
    */
   remove(e) {
     e.preventDefault();
+    const event = new CustomEvent("deleteTodo", {
+      detail: this.#todo,
+      bubbles: true,
+      cancelable: true,
+    });
+    this.#element.dispatchEvent(event);
+    if (event.defaultPrevented) {
+      return;
+    }
     this.#element.remove();
   }
 
@@ -163,5 +193,10 @@ export class TodoListItem {
     } else {
       this.#element.classList.remove("is-completed");
     }
+    const event = new CustomEvent("toggleTodo", {
+      detail: this.#todo,
+      bubbles: true,
+    });
+    this.#element.dispatchEvent(event);
   }
 }

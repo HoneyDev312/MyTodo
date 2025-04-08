@@ -10,7 +10,12 @@ const button = document.querySelector("#form-button");
 
 // FETCHDATA
 try {
-  const todos = await fetchData(url);
+  // const todos = await fetchData(url);
+  const storedTodos = localStorage.getItem("todos")?.toString();
+  let todos = [];
+  if (storedTodos) {
+    todos = JSON.parse(storedTodos);
+  }
   const todoList = new TodoList(todos);
 
   todoList.appendTo(body);

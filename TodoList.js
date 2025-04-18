@@ -1,5 +1,8 @@
 import { checkField } from "./checkField.js";
 import { createElement } from "./dom.js";
+import { postData } from "./postData.js";
+import { updateData } from "./updateData.js";
+import { deleteData } from "./deleteData.js";
 
 /**
  * @typedef {object} Todo
@@ -48,15 +51,32 @@ export class TodoList {
         button.addEventListener("click", (e) => this.#toggleFilter(e))
       );
 
-    this.#listElement.addEventListener("deleteTodo", ({ detail: todo }) => {
-      this.#todos = this.#todos.filter((t) => t !== todo);
-      this.#onUpdate();
-    });
+    this.#listElement.addEventListener(
+      "deleteTodo",
 
-    this.#listElement.addEventListener("toggleTodo", ({ detail: todo }) => {
-      todo.completed = !todo.completed;
-      this.#onUpdate();
-    });
+      async ({ detail: todo }) => {
+        this.#todos = this.#todos.filter((t) => t !== todo);
+        await deleteData("http://localhost:3000/api/todos", {
+          todo,
+        }).then((data) => {
+          console.log("deleteData", data);
+        });
+        // this.#onUpdate();
+      }
+    );
+
+    this.#listElement.addEventListener(
+      "toggleTodo",
+      async ({ detail: todo }) => {
+        todo.completed = !todo.completed;
+        await updateData("http://localhost:3000/api/todos", {
+          todo,
+        }).then((data) => {
+          console.log("updateData", data);
+        });
+        // this.#onUpdate();
+      }
+    );
 
     element.append(this.#listElement);
   }
@@ -65,7 +85,7 @@ export class TodoList {
    *
    * @param {SubmitEvent} e
    */
-  #onSubmit(e) {
+  async #onSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
     const button = document.querySelector("#form-button");
@@ -75,14 +95,17 @@ export class TodoList {
       return;
     }
     const todo = {
-      id: new Date(),
       title,
-      completed: false,
     };
     const newTodo = new TodoListItem(todo);
     this.#listElement.prepend(newTodo.element);
     this.#todos.push(todo);
-    this.#onUpdate();
+    await postData("http://localhost:3000/api/todos", {
+      data: todo.title,
+    }).then((data) => {
+      console.log("postData", data);
+    });
+    // this.#onUpdate();
     form.reset();
     checkField(input, button);
     input.focus();
